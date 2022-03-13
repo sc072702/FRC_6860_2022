@@ -181,21 +181,13 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
     // Secondary Intake
     if (Controller_1.getYButton()) {SecondaryIntk.set(-0.80);}
     else {SecondaryIntk.set(0);}
-     
+
     //climb
     if (Controller_1.getXButton()) {Climb.set(0.6);}
     else {Climb.stopMotor();}
         
     if (Controller_1.getAButton()) {Climb.set(-0.6);}
     else {Climb.stopMotor();}
-  
-
-
-
-  
-
-
-
   }
 
   /**
