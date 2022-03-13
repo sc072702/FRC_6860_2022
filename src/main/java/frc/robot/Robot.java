@@ -155,7 +155,7 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
 RightMotorFront.set(0.01);
 RightMotorback.set(0.01);
 LeftMotorFront.set(0.01);
-LeftMotorBack.set(0.02);
+LeftMotorBack.set(0.01);
     DriveTrain.arcadeDrive(Controller_1.getLeftY(), Controller_1.getRightY());
 
     
