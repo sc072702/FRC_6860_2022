@@ -42,6 +42,11 @@ private final Spark RightMotorback = new Spark(2); // right motor set 2nd pwm
 private final Spark LeftMotorFront = new Spark(3); // left motor set to 3rd pwm
 private final Spark LeftMotorBack = new Spark(4); // left motor set to 4th pwm
 
+RightMotorFront.enableDeadbandElimination(true);
+RightMotorback.enableDeadbandElimination(true);
+LeftMotorBack.enableDeadbandElimination(true);
+LeftMotorFront.enableDeadbandElimination(true);
+
 //filter.calculate(RightMotorback);
 
 
