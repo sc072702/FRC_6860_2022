@@ -161,11 +161,11 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
    */
   @Override
   public void teleopPeriodic() {
-RightMotorFront.set(0.01);
-RightMotorback.set(0.01);
-LeftMotorFront.set(0.01);
-LeftMotorBack.set(0.01);
-    DriveTrain.arcadeDrive(filter.calculate(Controller_1.getLeftY()), filter.calculate(Controller_1.getRightY()));
+RightMotorFront.set(0.1);
+RightMotorback.set(0.1);
+LeftMotorFront.set(0.1);
+LeftMotorBack.set(0.1);
+    DriveTrain.arcadeDrive(filter.calculate(Controller_1.getLeftX()), filter.calculate(Controller_1.getRightY()));
 
     
 
