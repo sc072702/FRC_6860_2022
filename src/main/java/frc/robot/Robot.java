@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.math.filter.SlewRateLimiter;
+
 
 
 /**
@@ -48,7 +48,7 @@ LeftMotorBack.enableDeadbandElimination(true);
 LeftMotorFront.enableDeadbandElimination(true);
 */
 //slew rate limiter
-SlewRateLimiter filter = new SlewRateLimiter(0.001);
+
 
 //filter.calculate(RightMotorback);
 
@@ -61,8 +61,8 @@ private final MotorControllerGroup LeftDrive = new MotorControllerGroup(LeftMoto
 DifferentialDrive DriveTrain = new DifferentialDrive(RightDrive, LeftDrive); // combined motors
 
 // Intake Motors
-private final Spark PrimaryIntk = new Spark(0); // first intake  set to 5th pwm
-private final Spark SecondaryIntk = new Spark(6); // Coveyor set to 6th pwm
+private final Spark PrimaryIntk = new Spark(6); // first intake  set to 5th pwm
+private final Spark SecondaryIntk = new Spark(0); // Coveyor set to 6th pwm
 
   
 
@@ -164,7 +164,7 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
     RightMotorback.set(0.1);
     LeftMotorFront.set(0.1);
     LeftMotorBack.set(0.1);
-    DriveTrain.arcadeDrive(filter.calculate(Controller_1.getLeftX()), filter.calculate(Controller_1.getRightY()));
+    DriveTrain.arcadeDrive(Controller_1.getLeftX(), Controller_1.getRightY());
 
     
 
