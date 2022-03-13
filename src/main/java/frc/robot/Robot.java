@@ -19,8 +19,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 
 
-
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -28,6 +26,7 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
  * creating this project, you must also update the build.gradle file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
@@ -191,7 +190,7 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
         else {SecondaryIntk.set(0);}
 
         if (Controller_1.getAButton()) {   
-          Climb.set(-0.3);}
+          Climb.set(-0.6);}
           else {SecondaryIntk.set(0);}
   
 
