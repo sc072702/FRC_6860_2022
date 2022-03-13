@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.math.filter.SlewRateLimiter;
 
 
 
@@ -46,6 +47,9 @@ RightMotorFront.enableDeadbandElimination(true);
 RightMotorback.enableDeadbandElimination(true);
 LeftMotorBack.enableDeadbandElimination(true);
 LeftMotorFront.enableDeadbandElimination(true);
+
+//slew rate limiter
+SlewRateLimiter = new SlewRateLimiter(0.001);
 
 //filter.calculate(RightMotorback);
 
@@ -161,7 +165,7 @@ RightMotorFront.set(0.01);
 RightMotorback.set(0.01);
 LeftMotorFront.set(0.01);
 LeftMotorBack.set(0.01);
-    DriveTrain.arcadeDrive(Controller_1.getLeftY(), Controller_1.getRightY());
+    DriveTrain.arcadeDrive(filter.calculate(Controller_1.getLeftY()), filter.calculate(Controller_1.getRightY()));
 
     
 
@@ -183,7 +187,7 @@ LeftMotorBack.set(0.01);
 
       //climb
       if (Controller_1.getXButton()) {    // sets primary intake to reverse
-        Climb.set(0.3);}
+        Climb.set(0.6);}
         else {SecondaryIntk.set(0);}
 
         if (Controller_1.getAButton()) {   
