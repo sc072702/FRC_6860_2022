@@ -61,8 +61,11 @@ private final MotorControllerGroup LeftDrive = new MotorControllerGroup(LeftMoto
 DifferentialDrive DriveTrain = new DifferentialDrive(RightDrive, LeftDrive); // combined motors
 
 // Intake Motors
-private final Spark PrimaryIntk = new Spark(6); // first intake  set to 5th pwm
-private final Spark SecondaryIntk = new Spark(0); // Coveyor set to 6th pwm
+private final Spark PrimaryIntk = new Spark(0); // first intake  set to pwm slot 0
+private final Spark SecondaryIntk = new Spark(6);
+
+ // Conveyor set to 6th pwm
+
 
   
 
@@ -179,27 +182,15 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
     else {PrimaryIntk.set(0);}
 
     // Secondary Intake
-    if (Controller_1.getYButton()) {    // sets primary intake to reverse
-      SecondaryIntk.set(-0.80);}
-      else {SecondaryIntk.set(0);}   
+    if (Controller_1.getYButton()) {SecondaryIntk.set(-0.80);}
+    else {SecondaryIntk.set(0);}
 
-
-      //climb
-      if (Controller_1.getXButton()) {    // sets primary intake to reverse
-        Climb.set(0.6);}
-        else {SecondaryIntk.set(0);}
-
-        if (Controller_1.getAButton()) {   
-          Climb.set(-0.6);}
-          else {SecondaryIntk.set(0);}
-  
-
-
-
-  
-
-
-
+    //climb
+    if (Controller_1.getXButton()) {Climb.set(0.6);}
+    else {Climb.stopMotor();}
+        
+    if (Controller_1.getAButton()) {Climb.set(-0.6);}
+    else {Climb.stopMotor();}
   }
 
   /**
