@@ -49,7 +49,7 @@ LeftMotorBack.enableDeadbandElimination(true);
 LeftMotorFront.enableDeadbandElimination(true);
 
 //slew rate limiter
-SlewRateLimiter = new SlewRateLimiter(0.001);
+SlewRateLimiter filter = new SlewRateLimiter(0.001);
 
 //filter.calculate(RightMotorback);
 
