@@ -186,8 +186,7 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
     else {SecondaryIntk.set(0);}
 
     //climb
-     if (Controller_1.getXButton())
-      {Climb.set(0.8);}
+     if (Controller_1.getXButton()) {Climb.set(0.8);}
     
       
     if (Controller_1.getAButton()) {Climb.set(-0.6);}
