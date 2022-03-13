@@ -178,7 +178,7 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
    else {PrimaryIntk.set(0);}
    
    if (Controller_1.getLeftBumper()) {    // sets primary intake to reverse
-    PrimaryIntk.set(1);}
+    PrimaryIntk.set(0.5);}
     else {PrimaryIntk.set(0);}
 
     // Secondary Intake
