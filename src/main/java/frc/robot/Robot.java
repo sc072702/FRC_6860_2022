@@ -8,7 +8,7 @@
 package frc.robot;
 
 
-//import edu.wpi.first.math.filter.SlewRateLimiter;
+import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  //SlewRateLimiter filter = new SlewRateLimiter(0.5);
+  SlewRateLimiter filter = new SlewRateLimiter(0.05);
 
 
   // defining Drivetrain variables
@@ -41,16 +41,10 @@ private final Spark RightMotorback = new Spark(2); // right motor set 2nd pwm
 
 private final Spark LeftMotorFront = new Spark(3); // left motor set to 3rd pwm
 private final Spark LeftMotorBack = new Spark(4); // left motor set to 4th pwm
-/*
-RightMotorFront.enableDeadbandElimination(true);
-RightMotorback.enableDeadbandElimination(true);
-LeftMotorBack.enableDeadbandElimination(true);
-LeftMotorFront.enableDeadbandElimination(true);
-*/
+
+
+
 //slew rate limiter
-
-
-//filter.calculate(RightMotorback);
 
 
 // Variable groups
@@ -163,23 +157,25 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
    */
   @Override
   public void teleopPeriodic() {
-    RightMotorFront.set(0.1);
-    RightMotorback.set(0.1);
-    LeftMotorFront.set(0.1);
-    LeftMotorBack.set(0.1);
+    double motorSpeed = 0.03;
+    RightMotorFront.set(motorSpeed);
+    RightMotorback.set(motorSpeed);
+    LeftMotorFront.set(motorSpeed);
+    LeftMotorBack.set(motorSpeed);
+    filter.calculate(Controller_1.getLeftX());
+    filter.calculate(Controller_1.getRightY());
     DriveTrain.arcadeDrive(Controller_1.getLeftX(), Controller_1.getRightY());
 
-    
-
-
-    // Primary Intake
-   if (Controller_1.getRightBumper()) {     // sets Primary intake to rotate foward
-    PrimaryIntk.set(.5);}
-   else {PrimaryIntk.set(0);}
-   
-   if (Controller_1.getLeftBumper()) {    // sets primary intake to reverse
+       
+   if (Controller_1.getBButton()) {    // sets primary intake to forward
     PrimaryIntk.set(0.5);}
     else {PrimaryIntk.set(0);}
+  
+    /* Intake Reverse (WIP)
+   if (Controller_1.getRightBumper()) {
+    PrimaryIntk.set(-.5);}
+   else {PrimaryIntk.set(0);}
+   */
 
     // Secondary Intake
     if (Controller_1.getYButton()) {SecondaryIntk.set(-0.60);}
