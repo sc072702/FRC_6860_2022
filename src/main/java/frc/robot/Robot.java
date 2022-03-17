@@ -174,7 +174,7 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
 
     // Primary Intake
    if (Controller_1.getRightBumper()) {     // sets Primary intake to rotate foward
-    PrimaryIntk.set(1);}
+    PrimaryIntk.set(.5);}
    else {PrimaryIntk.set(0);}
    
    if (Controller_1.getLeftBumper()) {    // sets primary intake to reverse
@@ -182,14 +182,19 @@ XboxController Controller_1 = new XboxController(0); // controller (# = port)
     else {PrimaryIntk.set(0);}
 
     // Secondary Intake
-    if (Controller_1.getYButton()) {SecondaryIntk.set(-0.50);}
+    if (Controller_1.getYButton()) {SecondaryIntk.set(-0.60);}
     else {SecondaryIntk.set(0);}
 
     //climb
-    if (Controller_1.getXButton()) {Climb.set(0.8);}
-    else {Climb.stopMotor();}
-
-    if (Controller_1.getAButton()) {Climb.set(-0.6);}
+    if (Controller_1.getXButton()) {
+      Climb.set(0.8);
+    }
+    else if (Controller_1.getAButton()) {
+      Climb.set(-0.6);
+    }
+    else {
+      Climb.stopMotor();
+    }
     
   }
 
